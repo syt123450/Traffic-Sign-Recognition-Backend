@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping(value = "/v0")
 public class GraphicPresenter {
 
     private static Logger logger = Logger.getLogger(GraphicPresenter.class);

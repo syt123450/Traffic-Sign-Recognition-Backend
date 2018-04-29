@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
  */
 
 @RestController
-//@RequestMapping("/v0")
+@RequestMapping(value = "/v0")
 public class PredictionPresenter {
 
     private static Logger logger = Logger.getLogger(PredictionPresenter.class);

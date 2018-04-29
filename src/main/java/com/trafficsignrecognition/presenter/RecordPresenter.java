@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 
 @RestController
+@RequestMapping(value = "/v0")
 public class RecordPresenter {
 
     private static Logger logger = Logger.getLogger(RecordPresenter.class);
