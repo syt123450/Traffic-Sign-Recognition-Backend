@@ -1,5 +1,6 @@
 package com.trafficsignrecognition.model.dao;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,21 @@ public class RecordDaoTest {
     private RecordDao recordDao;
 
     @Test
+    @Ignore
     public void testGetHistoryRecords() {
         System.out.println(recordDao.getHistoryRecords());
+    }
+
+    @Test
+    @Ignore
+    public void testInsertRecord() {
+        int classname = 0;
+        double accuracy = 0.88;
+        boolean accept = true;
+        String imageURL = "/tmp/00000_00000.jpg";
+        String time = "1111 11111";
+
+        recordDao.insertRecord(classname, accuracy, accept, imageURL, time);
     }
 
 }

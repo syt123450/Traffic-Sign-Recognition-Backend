@@ -10,7 +10,24 @@
          imageURL       AS imageURL,
          time           AS time
         FROM record
-        ORDER BY id DESC
+        ORDER BY id DESC;
     </select>
+
+    <insert id="insertRecord">
+        INSERT INTO record (
+          classname,
+          accuracy,
+          accept,
+          imageURL,
+          time
+        )
+        VALUES (
+          #{classname},
+          #{accuracy},
+          #{accept},
+          #{imageURL},
+          #{time}
+        );
+    </insert>
 
 </mapper>

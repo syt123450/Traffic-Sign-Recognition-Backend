@@ -21,6 +21,8 @@ public class PredictionHandler {
     private FileAccepter fileAccepter;
     @Autowired
     private PythonScriptCaller pythonScriptCaller;
+    @Autowired
+    private RecordHandler recordHandler;
 
     public PredictionResponse predict(MultipartFile file) {
 
@@ -28,6 +30,9 @@ public class PredictionHandler {
         List<String> predictResult = pythonScriptCaller.call(filePath);
 
         PredictionResponse response = PredictionResponseGenerator.generate(predictResult);
+
+        String fileName = file.getOriginalFilename();
+        recordHandler.addNewRecord(fileName, response.getResults().get(0));
 
         return response;
     }
