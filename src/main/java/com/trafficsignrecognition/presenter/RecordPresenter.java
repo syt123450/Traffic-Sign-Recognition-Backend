@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class RecordPresenter {
 
-    private static Logger logger = Logger.getLogger(PredictionPresenter.class);
+    private static Logger logger = Logger.getLogger(RecordPresenter.class);
     private Gson gson = new GsonBuilder().create();
     @Autowired
     private RecordHandler recordHandler;
