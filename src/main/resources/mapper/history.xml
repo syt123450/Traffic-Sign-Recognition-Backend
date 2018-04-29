@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.trafficsignrecognition.model.dao.RecordDao">
+
+    <select id="getHistoryRecords" resultType="com.trafficsignrecognition.model.domain.RecordUnit">
+        SELECT
+         classname      AS classname,
+         accuracy       AS accuracy,
+         accept         AS accept,
+         imageURL       AS imageURL,
+         time           AS time
+        FROM record
+        ORDER BY id DESC
+    </select>
+
+</mapper>

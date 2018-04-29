@@ -1,4 +1,4 @@
-package com.trafficsignrecognition.model.predict;
+package com.trafficsignrecognition.model.service.predict;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

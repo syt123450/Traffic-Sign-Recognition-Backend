@@ -1,4 +1,4 @@
-package com.trafficsignrecognition.model.config;
+package com.trafficsignrecognition.config;
 
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
