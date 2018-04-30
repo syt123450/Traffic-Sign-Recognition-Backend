@@ -2,6 +2,7 @@ package com.trafficsignrecognition.model.service.impl;
 
 import com.trafficsignrecognition.model.beans.PredictionResponse;
 import com.trafficsignrecognition.model.service.PredictionHandler;
+import com.trafficsignrecognition.model.service.RecordHandler;
 import com.trafficsignrecognition.model.service.impl.predict.PredictionResponseGenerator;
 import com.trafficsignrecognition.model.service.impl.predict.PythonScriptCaller;
 import com.trafficsignrecognition.model.service.impl.upload.FileAccepter;
