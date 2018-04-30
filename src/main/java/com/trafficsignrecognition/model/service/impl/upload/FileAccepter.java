@@ -1,4 +1,4 @@
-package com.trafficsignrecognition.model.service.upload;
+package com.trafficsignrecognition.model.service.impl.upload;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

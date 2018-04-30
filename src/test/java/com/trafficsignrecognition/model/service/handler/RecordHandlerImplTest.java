@@ -1,13 +1,14 @@
 package com.trafficsignrecognition.model.service.handler;
 
 import com.trafficsignrecognition.model.beans.PredictionResultUnit;
+import com.trafficsignrecognition.model.service.RecordHandler;
+import com.trafficsignrecognition.model.service.impl.RecordHandlerImpl;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by ss on 2018/4/29.
@@ -15,12 +16,13 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class RecordHandlerTest {
+public class RecordHandlerImplTest {
 
     @Autowired
-    private RecordHandler recordHandler;
+    private RecordHandlerImpl recordHandlerImpl;
 
     @Test
+    @Ignore
     public void testAddNewRecord() {
 
         String filePath = "/tmp/00000_00000.jpg";
@@ -28,6 +30,6 @@ public class RecordHandlerTest {
         unit.setClassID(1);
         unit.setAccuracy(0.7);
 
-        recordHandler.addNewRecord(filePath, unit);
+        recordHandlerImpl.addNewRecord(filePath, unit);
     }
 }

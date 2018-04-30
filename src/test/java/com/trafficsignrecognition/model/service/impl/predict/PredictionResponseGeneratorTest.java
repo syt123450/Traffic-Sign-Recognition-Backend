@@ -1,4 +1,4 @@
-package com.trafficsignrecognition.model.service.predict;
+package com.trafficsignrecognition.model.service.impl.predict;
 
 import org.junit.Ignore;
 import org.junit.Test;

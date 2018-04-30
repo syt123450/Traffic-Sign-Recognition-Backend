@@ -1,10 +1,12 @@
-package com.trafficsignrecognition.model.service.handler;
+package com.trafficsignrecognition.model.service.impl;
 
 import com.trafficsignrecognition.model.beans.PredictionResponse;
-import com.trafficsignrecognition.model.service.predict.PredictionResponseGenerator;
-import com.trafficsignrecognition.model.service.predict.PythonScriptCaller;
-import com.trafficsignrecognition.model.service.upload.FileAccepter;
+import com.trafficsignrecognition.model.service.PredictionHandler;
+import com.trafficsignrecognition.model.service.impl.predict.PredictionResponseGenerator;
+import com.trafficsignrecognition.model.service.impl.predict.PythonScriptCaller;
+import com.trafficsignrecognition.model.service.impl.upload.FileAccepter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +17,8 @@ import java.util.List;
  */
 
 @Service
-public class PredictionHandler {
+@Profile("dev")
+public class PredictionHandlerImpl implements PredictionHandler {
 
     @Autowired
     private FileAccepter fileAccepter;

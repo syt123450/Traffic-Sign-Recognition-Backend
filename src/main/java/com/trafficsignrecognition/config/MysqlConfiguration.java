@@ -20,7 +20,6 @@ import javax.sql.DataSource;
 @PropertySource("classpath:database.properties")
 public class MysqlConfiguration {
 
-//    static final String PACKAGE = "com.ticketSolder.model.dao.mysql";
     static final String PACKAGE = "com.trafficsignrecognition.model.dao";
 
     @Value("${mysql.datasource.url}")

@@ -1,12 +1,14 @@
-package com.trafficsignrecognition.model.service.handler;
+package com.trafficsignrecognition.model.service.impl;
 
 import com.trafficsignrecognition.model.beans.HistoryRecordBean;
 import com.trafficsignrecognition.model.beans.PredictionResultUnit;
 import com.trafficsignrecognition.model.dao.RecordDao;
 import com.trafficsignrecognition.model.domain.RecordUnit;
+import com.trafficsignrecognition.model.service.RecordHandler;
 import com.trafficsignrecognition.model.utils.PathUtils;
 import com.trafficsignrecognition.model.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,8 @@ import java.util.List;
  */
 
 @Service
-public class RecordHandler {
+@Profile("dev")
+public class RecordHandlerImpl implements RecordHandler {
 
     @Autowired
     private RecordDao recordDao;

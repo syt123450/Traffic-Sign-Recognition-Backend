@@ -3,7 +3,7 @@ package com.trafficsignrecognition.presenter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.trafficsignrecognition.model.beans.PredictionResponse;
-import com.trafficsignrecognition.model.service.handler.PredictionHandler;
+import com.trafficsignrecognition.model.service.PredictionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

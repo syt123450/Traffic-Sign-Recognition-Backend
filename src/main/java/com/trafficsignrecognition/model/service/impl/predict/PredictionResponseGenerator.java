@@ -1,4 +1,4 @@
-package com.trafficsignrecognition.model.service.predict;
+package com.trafficsignrecognition.model.service.impl.predict;
 
 import com.trafficsignrecognition.model.beans.PredictionResponse;
 import com.trafficsignrecognition.model.beans.PredictionResultUnit;
