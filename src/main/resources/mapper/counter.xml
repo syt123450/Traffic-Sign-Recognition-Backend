@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.trafficsignrecognition.model.dao.CounterDao">
+
+    <select id="getCounter" resultType="int">
+        SELECT accept_number
+        FROM training_counter;
+    </select>
+
+    <update id="clearCounter">
+        UPDATE training_counter
+        SET accept_number = 0;
+    </update>
+
+    <update id="addCounter">
+        UPDATE training_counter
+        SET accept_number = accept_number + 1;
+    </update>
+
+</mapper>
