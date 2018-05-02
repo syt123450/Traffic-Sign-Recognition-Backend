@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
  * Created by ss on 2018/3/30.
  */
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/v0")
 public class PredictionPresenter {

@@ -6,15 +6,13 @@ import com.trafficsignrecognition.model.beans.HighChartDataBean;
 import com.trafficsignrecognition.model.service.GraphicHandler;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by ss on 2018/4/29.
  */
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/v0")
 public class GraphicPresenter {

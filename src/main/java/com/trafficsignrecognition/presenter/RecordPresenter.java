@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by ss on 2018/4/29.
  */
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/v0")
 public class RecordPresenter {

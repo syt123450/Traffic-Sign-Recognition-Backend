@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClassesPrecise {
+public class ClassesPrecise implements Cloneable {
 
     private int epoch;
     private double class0;
@@ -62,7 +62,7 @@ public class ClassesPrecise {
     public Object clone() {
         ClassesPrecise classesPrecise = null;
         try{
-            classesPrecise = (ClassesPrecise)super.clone();
+            classesPrecise = (ClassesPrecise) super.clone();
         }catch(CloneNotSupportedException e) {
             e.printStackTrace();
         }
