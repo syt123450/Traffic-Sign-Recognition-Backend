@@ -1,5 +1,7 @@
 package com.trafficsignrecognition.model.dao;
 
+import com.trafficsignrecognition.model.domain.ClassesPrecise;
+import com.trafficsignrecognition.model.domain.ModelPreciseUnit;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,5 +13,6 @@ import java.util.List;
 @Repository
 public interface GraphicDao {
 
-    List<Double> getModelPrecises();
+    List<ModelPreciseUnit> getModelPrecises();
+    List<ClassesPrecise> getClassPrecises();
 }

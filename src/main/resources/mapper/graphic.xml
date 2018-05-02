@@ -2,5 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.trafficsignrecognition.model.dao.GraphicDao">
 
+    <select id="getModelPrecises" resultType="com.trafficsignrecognition.model.domain.ModelPreciseUnit">
+        SELECT
+          epoch     AS epoch,
+          precise   AS precise
+        FROM model_precise
+    </select>
+
+    <select id="getClassPrecises" resultType="com.trafficsignrecognition.model.domain.ClassesPrecise">
+        SELECT
+          epoch     AS epoch,
+          class0    AS class0,
+          class1    AS class1,
+          class2    AS class2,
+          class3    AS class3,
+          class4    AS class4,
+          class5    AS class5,
+          class6    AS class6,
+          class7    AS class7,
+          class8    AS class8,
+          class9    AS class9,
+          class10   AS class10,
+          class11   AS class11,
+          class12   AS class12,
+          class13   AS class13,
+          class14   AS class14,
+          class15   AS class15,
+          class16   AS class16,
+          class17   AS class17,
+          class18   AS class18,
+          class19   AS class19,
+          class20   AS class20,
+          class21   AS class21,
+          class22   AS class22,
+          class23   AS class23,
+          class24   AS class24,
+          class25   AS class25,
+          class26   AS class26,
+          class27   AS class27,
+          class28   AS class28,
+          class29   AS class29,
+          class30   AS class30,
+          class31   AS class31,
+          class32   AS class32,
+          class33   AS class33,
+          class34   AS class34,
+          class35   AS class35,
+          class36   AS class36,
+          class37   AS class37,
+          class38   AS class38,
+          class39   AS class39,
+          class40   AS class40,
+          class41   AS class41,
+          class42   AS class42
+        FROM class_precise
+        ORDER BY id
+        LIMIT 5
+    </select>
 
 </mapper>
