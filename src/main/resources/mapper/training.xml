@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.trafficsignrecognition.model.dao.TrainingDao">
+
+    <insert id="addNewModelPrecise" parameterType="com.trafficsignrecognition.model.domain.ModelPreciseUnit"
+            useGeneratedKeys="true" keyProperty="modelPreciseUnit.epoch">
+        INSERT INTO model_precise
+        (precise)
+        VALUES
+        (#{modelPreciseUnit.precise});
+    </insert>
+
+    <insert id="addNewClassesPrecise" parameterType="com.trafficsignrecognition.model.domain.ClassesPrecise">
+        INSERT INTO class_precise
+        (
+          epoch,
+          class0,
+          class1,
+          class2,
+          class3,
+          class4,
+          class5,
+          class6,
+          class7,
+          class8,
+          class9,
+          class10,
+          class11,
+          class12,
+          class13,
+          class14,
+          class15,
+          class16,
+          class17,
+          class18,
+          class19,
+          class20,
+          class21,
+          class22,
+          class23,
+          class24,
+          class25,
+          class26,
+          class27,
+          class28,
+          class29,
+          class30,
+          class31,
+          class32,
+          class33,
+          class34,
+          class35,
+          class36,
+          class37,
+          class38,
+          class39,
+          class40,
+          class41,
+          class42
+        )
+        VALUES
+        (
+          #{classesPrecise.epoch},
+          #{classesPrecise.class0},
+          #{classesPrecise.class1},
+          #{classesPrecise.class2},
+          #{classesPrecise.class3},
+          #{classesPrecise.class4},
+          #{classesPrecise.class5},
+          #{classesPrecise.class6},
+          #{classesPrecise.class7},
+          #{classesPrecise.class8},
+          #{classesPrecise.class9},
+          #{classesPrecise.class10},
+          #{classesPrecise.class11},
+          #{classesPrecise.class12},
+          #{classesPrecise.class13},
+          #{classesPrecise.class14},
+          #{classesPrecise.class15},
+          #{classesPrecise.class16},
+          #{classesPrecise.class17},
+          #{classesPrecise.class18},
+          #{classesPrecise.class19},
+          #{classesPrecise.class20},
+          #{classesPrecise.class21},
+          #{classesPrecise.class22},
+          #{classesPrecise.class23},
+          #{classesPrecise.class24},
+          #{classesPrecise.class25},
+          #{classesPrecise.class26},
+          #{classesPrecise.class27},
+          #{classesPrecise.class28},
+          #{classesPrecise.class29},
+          #{classesPrecise.class30},
+          #{classesPrecise.class31},
+          #{classesPrecise.class32},
+          #{classesPrecise.class33},
+          #{classesPrecise.class34},
+          #{classesPrecise.class35},
+          #{classesPrecise.class36},
+          #{classesPrecise.class37},
+          #{classesPrecise.class38},
+          #{classesPrecise.class39},
+          #{classesPrecise.class40},
+          #{classesPrecise.class41},
+          #{classesPrecise.class42}
+        );
+    </insert>
+
+</mapper>

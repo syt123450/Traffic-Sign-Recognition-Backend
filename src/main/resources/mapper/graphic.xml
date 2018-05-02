@@ -4,7 +4,7 @@
 
     <select id="getModelPrecises" resultType="com.trafficsignrecognition.model.domain.ModelPreciseUnit">
         SELECT
-          epoch     AS epoch,
+          id        AS epoch,
           precise   AS precise
         FROM model_precise
     </select>

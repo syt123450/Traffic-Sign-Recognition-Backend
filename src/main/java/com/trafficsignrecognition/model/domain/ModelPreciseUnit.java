@@ -16,4 +16,9 @@ public class ModelPreciseUnit {
     private int epoch;
     private double precise;
 
+    public ModelPreciseUnit(double precise) {
+        this.precise = precise;
+        this.epoch = 0;
+    }
+
 }

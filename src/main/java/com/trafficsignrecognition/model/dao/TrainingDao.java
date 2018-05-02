@@ -1,5 +1,8 @@
 package com.trafficsignrecognition.model.dao;
 
+import com.trafficsignrecognition.model.domain.ClassesPrecise;
+import com.trafficsignrecognition.model.domain.ModelPreciseUnit;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TrainingDao {
 
-    void addNewModelPrecise();
+    void addNewModelPrecise(@Param("modelPreciseUnit") ModelPreciseUnit modelPreciseUnit);
 
-    void addNewClassesPrecise();
+    void addNewClassesPrecise(@Param("classesPrecise")ClassesPrecise classesPrecise);
 }
