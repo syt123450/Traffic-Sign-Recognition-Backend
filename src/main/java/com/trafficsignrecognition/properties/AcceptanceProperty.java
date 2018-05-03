@@ -18,7 +18,7 @@ public class AcceptanceProperty {
         THRESHOLD = Double.parseDouble(threshold);
     }
 
-    @Value("${accept.retrain}")
+    @Value("${accept.max}")
     public void setRetrainNumber(String retrainNumber) {
         RETRAIN_NUMBER = Integer.parseInt(retrainNumber);
     }

@@ -7,12 +7,10 @@ import com.trafficsignrecognition.model.dao.RecordDao;
 import com.trafficsignrecognition.model.domain.RecordUnit;
 import com.trafficsignrecognition.model.service.RecordHandler;
 import com.trafficsignrecognition.model.service.TrainingHandler;
-import com.trafficsignrecognition.model.utils.PathUtils;
 import com.trafficsignrecognition.model.utils.TimeUtils;
 import com.trafficsignrecognition.properties.AcceptanceProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,10 +57,7 @@ public class RecordHandlerImpl implements RecordHandler {
             counterDao.addCounter();
             int count = counterDao.getCounter();
             if (count == acceptanceProperty.getRetrainNumber()) {
-                // retrain model
-                // move model
-                // insert new epoch data
-                counterDao.clearCounter();
+                trainingHandler.train();
             }
         }
     }

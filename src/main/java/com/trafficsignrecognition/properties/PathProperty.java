@@ -1,5 +1,6 @@
 package com.trafficsignrecognition.properties;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ public class PathProperty {
     private static String MODEL_DIR;
     private static String ACCEPT_DIR;
     private static String REJECT_DIR;
+    private static String RETRAIN_TEST_RESULT_DIR;
 
     @Value("${dir.base}")
     public void setBaseDir(String baseDir) {
@@ -41,6 +43,11 @@ public class PathProperty {
         REJECT_DIR = rejectDir;
     }
 
+    @Value("${dir.retrain.testResult}")
+    public void setRetrainTestResultDir(String retrainTestResultDir) {
+        RETRAIN_TEST_RESULT_DIR = retrainTestResultDir;
+    }
+
     public String getBaseDir() {
         return BASE_DIR;
     }
@@ -59,6 +66,10 @@ public class PathProperty {
 
     public String getUploadDir() {
         return UPLOAD_DIR;
+    }
+
+    public String getRetrainTestResultDir() {
+        return RETRAIN_TEST_RESULT_DIR;
     }
 
 }
