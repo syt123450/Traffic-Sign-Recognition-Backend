@@ -38,15 +38,14 @@ public class RecordHandlerImpl implements RecordHandler {
 
     }
 
-    public void addNewRecord(String fileName, PredictionResultUnit unit) {
+    public void addNewRecord(PredictionResultUnit unit, String imagePath) {
 
         double threshold = Double.parseDouble(env.getProperty("accept.threshold"));
         int classname = unit.getClassID();
         double accuracy = unit.getAccuracy();
         boolean accept = accuracy >= threshold;
-        String imageURL = PathUtils.generateFrontendImagePath(fileName, env.getProperty("server.port"));
         String time = TimeUtils.getTimeNowInString();
 
-        recordDao.insertRecord(classname, accuracy, accept, imageURL, time);
+        recordDao.insertRecord(classname, accuracy, accept, imagePath, time);
     }
 }

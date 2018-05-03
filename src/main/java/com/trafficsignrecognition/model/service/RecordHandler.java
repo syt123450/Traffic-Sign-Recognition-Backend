@@ -10,5 +10,5 @@ public interface RecordHandler {
 
     HistoryRecordBean getHistoryRecords();
 
-    void addNewRecord(String fileName, PredictionResultUnit unit);
+    void addNewRecord(PredictionResultUnit unit, String filePath);
 }

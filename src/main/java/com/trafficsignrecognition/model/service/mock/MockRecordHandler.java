@@ -46,7 +46,7 @@ public class MockRecordHandler implements RecordHandler{
     }
 
     @Override
-    public void addNewRecord(String fileName, PredictionResultUnit unit) {
+    public void addNewRecord(PredictionResultUnit unit, String filePath) {
         System.out.println("add user's upload file.");
     }
 }

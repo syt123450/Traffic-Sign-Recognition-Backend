@@ -30,6 +30,6 @@ public class RecordHandlerImplTest {
         unit.setClassID(1);
         unit.setAccuracy(0.7);
 
-        recordHandlerImpl.addNewRecord(filePath, unit);
+        recordHandlerImpl.addNewRecord(unit, filePath);
     }
 }
