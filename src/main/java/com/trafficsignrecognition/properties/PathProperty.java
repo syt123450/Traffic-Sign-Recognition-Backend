@@ -10,29 +10,39 @@ import org.springframework.stereotype.Service;
 @Service
 public class PathProperty {
 
+    private static String BASE_DIR;
     private static String UPLOAD_DIR;
     private static String MODEL_DIR;
     private static String ACCEPT_DIR;
     private static String REJECT_DIR;
 
-    @Value("${upload.baseDir}")
+    @Value("${dir.base}")
+    public void setBaseDir(String baseDir) {
+        BASE_DIR = baseDir;
+    }
+
+    @Value("${dir.upload}")
     public void setUploadDir(String uploadDir) {
         UPLOAD_DIR = uploadDir;
     }
 
-    @Value("${model.baseDir}")
+    @Value("${dir.model}")
     public void setModelDir(String modelDir) {
         MODEL_DIR = modelDir;
     }
 
-    @Value("${accept.baseDir}")
+    @Value("${dir.data.accept}")
     public void setAcceptDir(String acceptDir) {
         ACCEPT_DIR = acceptDir;
     }
 
-    @Value("${reject.baseDir}")
+    @Value("${dir.data.reject}")
     public void setRejectDir(String rejectDir) {
         REJECT_DIR = rejectDir;
+    }
+
+    public String getBaseDir() {
+        return BASE_DIR;
     }
 
     public String getAcceptDir() {
@@ -50,4 +60,5 @@ public class PathProperty {
     public String getUploadDir() {
         return UPLOAD_DIR;
     }
+
 }

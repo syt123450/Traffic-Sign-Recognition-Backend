@@ -6,6 +6,7 @@ import com.trafficsignrecognition.model.dao.CounterDao;
 import com.trafficsignrecognition.model.dao.RecordDao;
 import com.trafficsignrecognition.model.domain.RecordUnit;
 import com.trafficsignrecognition.model.service.RecordHandler;
+import com.trafficsignrecognition.model.service.TrainingHandler;
 import com.trafficsignrecognition.model.utils.PathUtils;
 import com.trafficsignrecognition.model.utils.TimeUtils;
 import com.trafficsignrecognition.properties.AcceptanceProperty;
@@ -30,6 +31,8 @@ public class RecordHandlerImpl implements RecordHandler {
     private CounterDao counterDao;
     @Autowired
     private AcceptanceProperty acceptanceProperty;
+    @Autowired
+    private TrainingHandler trainingHandler;
 
     public HistoryRecordBean getHistoryRecords() {
 
