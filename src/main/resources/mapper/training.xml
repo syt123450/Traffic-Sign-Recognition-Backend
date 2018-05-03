@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.trafficsignrecognition.model.dao.TrainingDao">
 
-    <insert id="addNewModelPrecise" parameterType="com.trafficsignrecognition.model.domain.ModelPreciseUnit"
+    <insert id="addNewModelPrecise" parameterType="ModelPreciseUnit"
             useGeneratedKeys="true" keyProperty="modelPreciseUnit.epoch">
         INSERT INTO model_precise
         (precise)
@@ -10,7 +10,7 @@
         (#{modelPreciseUnit.precise});
     </insert>
 
-    <insert id="addNewClassesPrecise" parameterType="com.trafficsignrecognition.model.domain.ClassesPrecise">
+    <insert id="addNewClassesPrecise" parameterType="ClassesPrecise">
         INSERT INTO class_precise
         (
           epoch,
