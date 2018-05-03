@@ -9,7 +9,9 @@ import com.trafficsignrecognition.model.service.TrainingHandler;
 import com.trafficsignrecognition.model.service.impl.generator.ClassesPreciseGenerator;
 import com.trafficsignrecognition.model.service.impl.generator.ModelPreciseUnitGenerator;
 import com.trafficsignrecognition.model.service.impl.training.ModelDumper;
+import com.trafficsignrecognition.model.service.impl.training.ModelTestingCaller;
 import com.trafficsignrecognition.model.service.impl.training.TestResultReader;
+import com.trafficsignrecognition.model.service.impl.training.ModelTrainingCaller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -28,11 +30,20 @@ public class TrainingHandlerImpl implements TrainingHandler {
     private TestResultReader testResultReader;
     @Autowired
     private TrainingDao trainingDao;
+    @Autowired
+    private ModelTrainingCaller modelTrainingCaller;
+    @Autowired
+    private ModelTestingCaller modelTestingCaller;
+
 
     public void train() {
         // retrain model
 
+        modelTrainingCaller.train();
+
         // test model
+
+        modelTestingCaller.test();
 
         // read model test result from text file
         ModelTestResultBean modelTestResultBean = testResultReader.read();
