@@ -16,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Created by ss on 2018/5/2.
  */
@@ -35,33 +38,39 @@ public class TrainingHandlerImpl implements TrainingHandler {
     @Autowired
     private ModelTestingCaller modelTestingCaller;
 
+    private static ExecutorService executorService = Executors.newFixedThreadPool(1);
 
     public void train() {
-        // retrain model
+        executorService.execute(new RetrainTask());
+    }
 
-        modelTrainingCaller.train();
+    private class RetrainTask implements Runnable {
 
-        // test model
+        @Override
+        public void run() {
+            // retrain model
+            modelTrainingCaller.train();
 
-        modelTestingCaller.test();
+            // test model
+            modelTestingCaller.test();
 
-        // read model test result from text file
-        ModelTestResultBean modelTestResultBean = testResultReader.read();
+            // read model test result from text file
+            ModelTestResultBean modelTestResultBean = testResultReader.read();
 
-        // insert new model metrics into database
+            // insert new model metrics into database
+            ModelPreciseUnit modelPreciseUnit = ModelPreciseUnitGenerator.generate(modelTestResultBean.getModelPrecise());
+            trainingDao.addNewModelPrecise(modelPreciseUnit);
 
-        ModelPreciseUnit modelPreciseUnit = ModelPreciseUnitGenerator.generate(modelTestResultBean.getModelPrecise());
-        trainingDao.addNewModelPrecise(modelPreciseUnit);
+            ClassesPrecise classesPrecise = ClassesPreciseGenerator.generate(
+                    modelPreciseUnit.getEpoch(),
+                    modelTestResultBean.getClassesPrecise());
+            trainingDao.addNewClassesPrecise(classesPrecise);
 
-        ClassesPrecise classesPrecise = ClassesPreciseGenerator.generate(
-                modelPreciseUnit.getEpoch(),
-                modelTestResultBean.getClassesPrecise());
-        trainingDao.addNewClassesPrecise(classesPrecise);
+            // move model
+            ModelDumper.dump();
 
-        // move model
-        ModelDumper.dump();
-
-        // update counter
-        counterDao.clearCounter();
+            // update counter
+            counterDao.clearCounter();
+        }
     }
 }
