@@ -1,6 +1,5 @@
 package com.trafficsignrecognition.properties;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +13,14 @@ public class PathProperty {
     private static String BASE_DIR;
     private static String UPLOAD_DIR;
     private static String MODEL_DIR;
+    private static String MODEL_PREDICT_SCRIPT_DIR;
+    private static String MODEL_GRAPH_DIR;
+    private static String MODEL_LABEL_DIR;
     private static String ACCEPT_DIR;
     private static String REJECT_DIR;
     private static String RETRAIN_TEST_RESULT_DIR;
+    private static String RETRAIN_GRAPH_DIR;
+    private static String RETRAIN_LABEL_DIR;
 
     @Value("${dir.base}")
     public void setBaseDir(String baseDir) {
@@ -33,6 +37,21 @@ public class PathProperty {
         MODEL_DIR = modelDir;
     }
 
+    @Value("${dir.model.predictScript}")
+    public void setModelPredictScriptDir(String modelPredictScriptDir) {
+        MODEL_PREDICT_SCRIPT_DIR = modelPredictScriptDir;
+    }
+
+    @Value("${dir.model.graph}")
+    public void setModelGraphDir(String modelGraphDir) {
+        MODEL_GRAPH_DIR = modelGraphDir;
+    }
+
+    @Value("${dir.model.label}")
+    public void setModelLabelDir(String modelLabelDir) {
+        MODEL_LABEL_DIR = modelLabelDir;
+    }
+
     @Value("${dir.data.accept}")
     public void setAcceptDir(String acceptDir) {
         ACCEPT_DIR = acceptDir;
@@ -46,6 +65,16 @@ public class PathProperty {
     @Value("${dir.retrain.testResult}")
     public void setRetrainTestResultDir(String retrainTestResultDir) {
         RETRAIN_TEST_RESULT_DIR = retrainTestResultDir;
+    }
+
+    @Value("${dir.retrain.graph}")
+    public void setRetrainGraphDir(String retrainGraphDir) {
+        RETRAIN_GRAPH_DIR = retrainGraphDir;
+    }
+
+    @Value("${dir.retrain.label}")
+    public void setRetrainLabelDir(String retrainLabelDir) {
+        RETRAIN_LABEL_DIR = retrainLabelDir;
     }
 
     public String getBaseDir() {
@@ -64,12 +93,32 @@ public class PathProperty {
         return MODEL_DIR;
     }
 
+    public String getModelPredictScriptDir() {
+        return MODEL_PREDICT_SCRIPT_DIR;
+    }
+
+    public String getModelGraphDir() {
+        return MODEL_GRAPH_DIR;
+    }
+
+    public String getModelLabelDir() {
+        return MODEL_LABEL_DIR;
+    }
+
     public String getUploadDir() {
         return UPLOAD_DIR;
     }
 
     public String getRetrainTestResultDir() {
         return RETRAIN_TEST_RESULT_DIR;
+    }
+
+    public String getRetrainGraphDir() {
+        return RETRAIN_GRAPH_DIR;
+    }
+
+    public String getRetrainLabelDir() {
+        return RETRAIN_LABEL_DIR;
     }
 
 }

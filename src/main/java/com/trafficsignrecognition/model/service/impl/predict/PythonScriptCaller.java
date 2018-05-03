@@ -17,27 +17,31 @@ import java.util.List;
 @Service
 public class PythonScriptCaller {
 
-    private static final String PREDICT_TEMPLATE = "python %s/model/label_image.py" +
-            " --graph=%s/model/output_graph.pb" +
-            " --labels=%s/model/output_labels.txt" +
+    private static final String PREDICT_RAW = "python %s" +
+            " --graph=%s" +
+            " --labels=%s" +
             " --input_layer=Mul" +
             " --output_layer=final_result" +
             " --input_mean=128" +
             " --input_std=128" +
             " --image=%s";
+    private static String PREDICT_TEMPLATE;
+
     @Autowired
-    private PathProperty pathProperty;
+    public void setPredictTemplate(PathProperty pathProperty) {
+        PREDICT_TEMPLATE = String.format(PREDICT_RAW,
+                pathProperty.getModelPredictScriptDir(),
+                pathProperty.getModelGraphDir(),
+                pathProperty.getModelLabelDir(),
+                "%s");
+    }
 
     public List<String> call(String imagePath) {
 
-        String modelBaseDir = pathProperty.getModelDir();
         List<String> predictResult = new ArrayList<>();
 
         try {
             String predictScript = String.format(PREDICT_TEMPLATE,
-                    modelBaseDir,
-                    modelBaseDir,
-                    modelBaseDir,
                     imagePath);
 
             Process ps = Runtime.getRuntime().exec(predictScript);

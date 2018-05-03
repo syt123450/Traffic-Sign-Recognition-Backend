@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -26,8 +27,9 @@ public class TestResultReader {
         ModelTestResultBean result = new ModelTestResultBean();
 
         try {
-            FileInputStream resultFile = new FileInputStream(pathProperty.getRetrainTestResultDir());
-            BufferedReader br = new BufferedReader(new InputStreamReader(resultFile));
+            File resultFile = new File(pathProperty.getRetrainTestResultDir());
+            FileInputStream inputStream = new FileInputStream(resultFile);
+            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 
             String strLine;
             strLine = br.readLine();
@@ -40,6 +42,8 @@ public class TestResultReader {
             }
 
             result.setClassesPrecise(classesPrecise);
+
+            resultFile.delete();
 
         } catch (Exception e) {
             e.printStackTrace();
