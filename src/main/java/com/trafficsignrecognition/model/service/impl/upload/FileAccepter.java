@@ -1,5 +1,6 @@
 package com.trafficsignrecognition.model.service.impl.upload;
 
+import com.trafficsignrecognition.properties.PathProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,11 @@ import java.nio.file.Paths;
 public class FileAccepter {
 
     @Autowired
-    private Environment env;
+    private PathProperty pathProperty;
 
     public String accept(MultipartFile file) {
 
-        String baseDir = env.getProperty("upload.baseDir");
+        String baseDir = pathProperty.getUploadDir();
         String fileName = file.getOriginalFilename();
         String filepath = Paths.get(baseDir, fileName).toString();
 

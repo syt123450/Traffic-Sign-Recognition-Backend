@@ -7,6 +7,8 @@ import com.trafficsignrecognition.model.service.impl.loader.ImageLoader;
 import com.trafficsignrecognition.model.service.impl.predict.PredictionResponseGenerator;
 import com.trafficsignrecognition.model.service.impl.predict.PythonScriptCaller;
 import com.trafficsignrecognition.model.service.impl.upload.FileAccepter;
+import com.trafficsignrecognition.properties.AcceptanceProperty;
+import com.trafficsignrecognition.properties.PathProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
@@ -32,7 +34,7 @@ public class PredictionHandlerImpl implements PredictionHandler {
     @Autowired
     private ImageLoader imageLoader;
     @Autowired
-    private Environment env;
+    private AcceptanceProperty acceptanceProperty;
 
     public PredictionResponse predict(MultipartFile file) {
 
@@ -43,9 +45,14 @@ public class PredictionHandlerImpl implements PredictionHandler {
 
         String fileName = file.getOriginalFilename();
 
-        boolean accept = response.getResults().get(0).getAccuracy() > Double.parseDouble(env.getProperty("accept.threshold"));
-        String imagePath = accept ? imageLoader.loadAccepted(fileName, response.getResults().get(0).getClassID()) :
-                imageLoader.loadUnaccepted(fileName);
+        boolean accept = response.getResults().get(0).getAccuracy() > acceptanceProperty.getThreshold();
+
+        String imagePath;
+        if (accept) {
+            imagePath = imageLoader.loadAccepted(fileName, response.getResults().get(0).getClassID());
+        } else {
+            imagePath = imageLoader.loadUnaccepted(fileName);
+        }
 
         recordHandler.addNewRecord(response.getResults().get(0), imagePath);
 

@@ -1,5 +1,6 @@
 package com.trafficsignrecognition.model.service.impl.predict;
 
+import com.trafficsignrecognition.properties.PathProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -25,11 +26,11 @@ public class PythonScriptCaller {
             " --input_std=128" +
             " --image=%s";
     @Autowired
-    private Environment env;
+    private PathProperty pathProperty;
 
     public List<String> call(String imagePath) {
 
-        String modelBaseDir = env.getProperty("model.baseDir");
+        String modelBaseDir = pathProperty.getModelDir();
         List<String> predictResult = new ArrayList<>();
 
         try {

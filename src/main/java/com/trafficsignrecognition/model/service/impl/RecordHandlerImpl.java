@@ -2,11 +2,13 @@ package com.trafficsignrecognition.model.service.impl;
 
 import com.trafficsignrecognition.model.beans.HistoryRecordBean;
 import com.trafficsignrecognition.model.beans.PredictionResultUnit;
+import com.trafficsignrecognition.model.dao.CounterDao;
 import com.trafficsignrecognition.model.dao.RecordDao;
 import com.trafficsignrecognition.model.domain.RecordUnit;
 import com.trafficsignrecognition.model.service.RecordHandler;
 import com.trafficsignrecognition.model.utils.PathUtils;
 import com.trafficsignrecognition.model.utils.TimeUtils;
+import com.trafficsignrecognition.properties.AcceptanceProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
@@ -25,7 +27,9 @@ public class RecordHandlerImpl implements RecordHandler {
     @Autowired
     private RecordDao recordDao;
     @Autowired
-    private Environment env;
+    private CounterDao counterDao;
+    @Autowired
+    private AcceptanceProperty acceptanceProperty;
 
     public HistoryRecordBean getHistoryRecords() {
 
@@ -40,12 +44,23 @@ public class RecordHandlerImpl implements RecordHandler {
 
     public void addNewRecord(PredictionResultUnit unit, String imagePath) {
 
-        double threshold = Double.parseDouble(env.getProperty("accept.threshold"));
+        double threshold = acceptanceProperty.getThreshold();
         int classname = unit.getClassID();
         double accuracy = unit.getAccuracy();
         boolean accept = accuracy >= threshold;
         String time = TimeUtils.getTimeNowInString();
 
         recordDao.insertRecord(classname, accuracy, accept, imagePath, time);
+
+        if (accept) {
+            counterDao.addCounter();
+            int count = counterDao.getCounter();
+            if (count == acceptanceProperty.getRetrainNumber()) {
+                // retrain model
+                // move model
+                // insert new epoch data
+                counterDao.clearCounter();
+            }
+        }
     }
 }
