@@ -18,9 +18,12 @@ public class PathProperty {
     private static String MODEL_LABEL_DIR;
     private static String ACCEPT_DIR;
     private static String REJECT_DIR;
+    private static String TEST_IMAGES_DIR;
     private static String RETRAIN_TEST_RESULT_DIR;
     private static String RETRAIN_GRAPH_DIR;
     private static String RETRAIN_LABEL_DIR;
+    private static String RETRAIN_TRIGGER_TRAIN_DIR;
+    private static String RETRAIN_TRIGGER_TEST_DIR;
 
     @Value("${dir.base}")
     public void setBaseDir(String baseDir) {
@@ -62,6 +65,11 @@ public class PathProperty {
         REJECT_DIR = rejectDir;
     }
 
+    @Value("${dir.data.test}")
+    public void setTestImagesDir(String testImagesDir) {
+        TEST_IMAGES_DIR = testImagesDir;
+    }
+
     @Value("${dir.retrain.testResult}")
     public void setRetrainTestResultDir(String retrainTestResultDir) {
         RETRAIN_TEST_RESULT_DIR = retrainTestResultDir;
@@ -75,6 +83,16 @@ public class PathProperty {
     @Value("${dir.retrain.label}")
     public void setRetrainLabelDir(String retrainLabelDir) {
         RETRAIN_LABEL_DIR = retrainLabelDir;
+    }
+
+    @Value("${dir.retrain.trigger.train}")
+    public void setRetrainTriggerTrainDir(String retrainTriggerTrainDir) {
+        RETRAIN_TRIGGER_TRAIN_DIR = retrainTriggerTrainDir;
+    }
+
+    @Value("${dir.retrain.trigger.test}")
+    public void setRetrainTriggerTestDir(String retrainTriggerTestDir) {
+        RETRAIN_TRIGGER_TEST_DIR = retrainTriggerTestDir;
     }
 
     public String getBaseDir() {
@@ -119,6 +137,18 @@ public class PathProperty {
 
     public String getRetrainLabelDir() {
         return RETRAIN_LABEL_DIR;
+    }
+
+    public String getTestImagesDir() {
+        return TEST_IMAGES_DIR;
+    }
+
+    public String getRetrainTriggerTrainDir() {
+        return RETRAIN_TRIGGER_TRAIN_DIR;
+    }
+
+    public String getRetrainTriggerTestDir() {
+        return RETRAIN_TRIGGER_TEST_DIR;
     }
 
 }

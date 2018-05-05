@@ -51,6 +51,9 @@ public class TrainingHandlerImpl implements TrainingHandler {
             // retrain model
             modelTrainingCaller.train();
 
+            // move model
+            ModelDumper.dump();
+
             // test model
             modelTestingCaller.test();
 
@@ -65,9 +68,6 @@ public class TrainingHandlerImpl implements TrainingHandler {
                     modelPreciseUnit.getEpoch(),
                     modelTestResultBean.getClassesPrecise());
             trainingDao.addNewClassesPrecise(classesPrecise);
-
-            // move model
-            ModelDumper.dump();
 
             // update counter
             counterDao.clearCounter();
