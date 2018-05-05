@@ -1,5 +1,6 @@
 package com.trafficsignrecognition.config;
 
+import com.trafficsignrecognition.properties.PathProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
@@ -16,8 +17,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @AutoConfigureAfter(DispatcherServletAutoConfiguration.class)
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
+    private static String UPLOAD_BASE_DIR;
+
     @Autowired
-    private Environment env;
+    private void setUploadBaseDir(PathProperty pathProperty) {
+        UPLOAD_BASE_DIR = "file:" + pathProperty.getUploadDir() + "/";
+    }
 
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
             "classpath:/META-INF/resources/", "classpath:/resources/",
@@ -26,13 +31,11 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-        String baseDir = "file:" + env.getProperty("upload.baseDir") + "/";
-
         registry.addResourceHandler("/system/**")
                 .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
 
         registry.addResourceHandler("/**")
-                .addResourceLocations(baseDir);
+                .addResourceLocations(UPLOAD_BASE_DIR);
     }
 
 }
