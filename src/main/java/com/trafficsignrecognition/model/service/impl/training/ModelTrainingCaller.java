@@ -35,7 +35,7 @@ public class ModelTrainingCaller {
                 pathProperty.getInterSummaryDir(),
                 pathProperty.getInterBottleneckDir(),
                 pathProperty.getInterSavedModelDir(),
-                "$s");
+                "%s");
     }
 
     public void train() {
