@@ -24,7 +24,7 @@ public class ImageLoaderTest {
     @Test
     @Ignore
     public void testLoadAccepted() {
-        imageLoader.loadAccepted("bird.jpg", 0);
+        System.out.println(imageLoader.loadAccepted("00000_00000.jpg", 0));
     }
 
     @Test
