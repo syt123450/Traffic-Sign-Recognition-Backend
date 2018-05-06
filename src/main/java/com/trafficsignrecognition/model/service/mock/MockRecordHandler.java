@@ -26,14 +26,14 @@ public class MockRecordHandler implements RecordHandler{
         unit1.setClassname(0);
         unit1.setAccuracy(0.9);
         unit1.setAccept(true);
-        unit1.setImageURL("localhost:8080/00000_00000.jpg");
+        unit1.setImageURL("http://localhost:8080/00000_00000.jpg");
         unit1.setTime("2018-18-29T3:33:9Z");
 
         RecordUnit unit2 = new RecordUnit();
         unit2.setClassname(1);
         unit2.setAccuracy(0.2);
         unit2.setAccept(false);
-        unit2.setImageURL("localhost:8080/00000_00000.jpg");
+        unit2.setImageURL("http://localhost:8080/00000_00000.jpg");
         unit2.setTime("2018-18-29T3:33:9Z");
 
         List<RecordUnit> units = new ArrayList<>();
