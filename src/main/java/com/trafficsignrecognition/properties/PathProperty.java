@@ -25,6 +25,12 @@ public class PathProperty {
     private static String RETRAIN_TRIGGER_TRAIN_DIR;
     private static String RETRAIN_TRIGGER_TEST_DIR;
 
+    private static String INTER_GRAPH_DIR;
+    private static String INTER_MODEL_DIR;
+    private static String INTER_SUMMARY_DIR;
+    private static String INTER_BOTTLENECK_DIR;
+    private static String INTER_SAVED_MODEL_DIR;
+
     @Value("${dir.base}")
     public void setBaseDir(String baseDir) {
         BASE_DIR = baseDir;
@@ -95,6 +101,31 @@ public class PathProperty {
         RETRAIN_TRIGGER_TEST_DIR = retrainTriggerTestDir;
     }
 
+    @Value("${dir.inter.graph}")
+    public void setInterGraphDir(String interGraphDir) {
+        INTER_GRAPH_DIR = interGraphDir;
+    }
+
+    @Value("${dir.inter.model}")
+    public void setInterModelDir(String interModelDir) {
+        INTER_MODEL_DIR = interModelDir;
+    }
+
+    @Value("${dir.inter.summary}")
+    public void setInterSummaryDir(String interSummaryDir) {
+        INTER_SUMMARY_DIR = interSummaryDir;
+    }
+
+    @Value("${dir.inter.bottleneck}")
+    public void setInterBottleneckDir(String interBottleneckDir) {
+        INTER_BOTTLENECK_DIR = interBottleneckDir;
+    }
+
+    @Value("${dir.inter.savedmodel}")
+    public void setInterSavedModelDir(String interSavedModelDir) {
+        INTER_SAVED_MODEL_DIR = interSavedModelDir;
+    }
+
     public String getBaseDir() {
         return BASE_DIR;
     }
@@ -151,4 +182,23 @@ public class PathProperty {
         return RETRAIN_TRIGGER_TEST_DIR;
     }
 
+    public String getInterGraphDir() {
+        return INTER_GRAPH_DIR;
+    }
+
+    public String getInterModelDir() {
+        return INTER_MODEL_DIR;
+    }
+
+    public String getInterSummaryDir() {
+        return INTER_SUMMARY_DIR;
+    }
+
+    public String getInterBottleneckDir() {
+        return INTER_BOTTLENECK_DIR;
+    }
+
+    public String getInterSavedModelDir() {
+        return INTER_SAVED_MODEL_DIR;
+    }
 }

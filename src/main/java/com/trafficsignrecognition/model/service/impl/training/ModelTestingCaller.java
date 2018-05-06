@@ -25,8 +25,8 @@ public class ModelTestingCaller {
     @Autowired
     public void setTestCommand(PathProperty pathProperty) {
         TEST_COMMAND = String.format(TEST_COMMAND_RAW, pathProperty.getRetrainTriggerTestDir(),
-                pathProperty.getModelGraphDir(),
-                pathProperty.getModelLabelDir(),
+                pathProperty.getRetrainGraphDir(),
+                pathProperty.getRetrainLabelDir(),
                 pathProperty.getRetrainTestResultDir(),
                 pathProperty.getTestImagesDir());
     }
