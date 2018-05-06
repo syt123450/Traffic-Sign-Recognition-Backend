@@ -21,7 +21,7 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Autowired
     private void setUploadBaseDir(PathProperty pathProperty) {
-        UPLOAD_BASE_DIR = "file:" + pathProperty.getUploadDir() + "/";
+        UPLOAD_BASE_DIR = "file:" + pathProperty.getImageDir() + "/";
     }
 
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {

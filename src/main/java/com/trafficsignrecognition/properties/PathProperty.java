@@ -1,5 +1,6 @@
 package com.trafficsignrecognition.properties;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,8 @@ public class PathProperty {
     private static String MODEL_PREDICT_SCRIPT_DIR;
     private static String MODEL_GRAPH_DIR;
     private static String MODEL_LABEL_DIR;
+
+    private static String IMAGE_DIR;
     private static String ACCEPT_DIR;
     private static String REJECT_DIR;
     private static String TEST_IMAGES_DIR;
@@ -59,6 +62,11 @@ public class PathProperty {
     @Value("${dir.model.label}")
     public void setModelLabelDir(String modelLabelDir) {
         MODEL_LABEL_DIR = modelLabelDir;
+    }
+
+    @Value("${dir.data}")
+    public void setImageDir(String imageDir) {
+        IMAGE_DIR = imageDir;
     }
 
     @Value("${dir.data.accept}")
@@ -128,6 +136,10 @@ public class PathProperty {
 
     public String getBaseDir() {
         return BASE_DIR;
+    }
+
+    public String getImageDir() {
+        return IMAGE_DIR;
     }
 
     public String getAcceptDir() {

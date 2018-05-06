@@ -1,6 +1,7 @@
 package com.trafficsignrecognition.model.service.impl.loader;
 
 import com.trafficsignrecognition.properties.PathProperty;
+import com.trafficsignrecognition.properties.ServerProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +14,15 @@ public class ImageLoader {
 
     private static final String MOVE_REJECT_RAW = "mv %s/%s %s/%s";
     private static final String MOVE_ACCEPT_RAW = "mv %s/%s %s/%s/%s";
-    private static final String REJECT_PATH_RAW = "%s/%s";
-    private static final String ACCEPT_PATH_RAW = "%s/%s/%s";
+    private static final String REJECT_PATH_RAW = "http://localhost:%s/reject/%s";
+    private static final String ACCEPT_PATH_RAW = "http://localhost:%s/accept/%s/%s";
     private static String MOVE_REJECT_TEMPLATE;
     private static String MOVE_ACCEPT_TEMPLATE;
     private static String REJECT_PATH_TEMPLATE;
     private static String ACCEPT_PATH_TEMPLATE;
+
+    @Autowired
+    private ServerProperty serverProperty;
 
     @Autowired
     public void setMoveScript(PathProperty pathProperty) {
@@ -34,10 +38,10 @@ public class ImageLoader {
                 "%s",
                 "%s");
         REJECT_PATH_TEMPLATE = String.format(REJECT_PATH_RAW,
-                pathProperty.getRejectDir(),
+                serverProperty.getServerPort(),
                 "%s");
         ACCEPT_PATH_TEMPLATE = String.format(ACCEPT_PATH_RAW,
-                pathProperty.getAcceptDir(),
+                serverProperty.getServerPort(),
                 "%s",
                 "%s");
     }
