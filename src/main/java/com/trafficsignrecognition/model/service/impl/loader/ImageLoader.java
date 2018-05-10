@@ -2,6 +2,7 @@ package com.trafficsignrecognition.model.service.impl.loader;
 
 import com.trafficsignrecognition.properties.PathProperty;
 import com.trafficsignrecognition.properties.ServerProperty;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +13,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class ImageLoader {
 
+    private static Logger logger = Logger.getLogger(ImageLoader.class);
+
     private static final String MOVE_REJECT_RAW = "mv %s/%s %s/%s";
     private static final String MOVE_ACCEPT_RAW = "mv %s/%s %s/%s/%s";
-    private static final String REJECT_PATH_RAW = "http://localhost:%s/reject/%s";
-    private static final String ACCEPT_PATH_RAW = "http://localhost:%s/accept/%s/%s";
+    private static final String REJECT_PATH_RAW = "http://%s:%s/reject/%s";
+    private static final String ACCEPT_PATH_RAW = "http://%s:%s/accept/%s/%s";
     private static String MOVE_REJECT_TEMPLATE;
     private static String MOVE_ACCEPT_TEMPLATE;
     private static String REJECT_PATH_TEMPLATE;
@@ -38,15 +41,19 @@ public class ImageLoader {
                 "%s",
                 "%s");
         REJECT_PATH_TEMPLATE = String.format(REJECT_PATH_RAW,
+                serverProperty.getServerAddress(),
                 serverProperty.getServerPort(),
                 "%s");
         ACCEPT_PATH_TEMPLATE = String.format(ACCEPT_PATH_RAW,
+                serverProperty.getServerAddress(),
                 serverProperty.getServerPort(),
                 "%s",
                 "%s");
     }
 
     public String loadAccepted(String fileName, int classname) {
+
+        logger.info("Load accepted image.");
 
         String moveScript = String.format(MOVE_ACCEPT_TEMPLATE, fileName, String.format("%05d", classname), fileName);
 
@@ -63,6 +70,8 @@ public class ImageLoader {
     }
 
     public String loadUnaccepted(String fileName) {
+
+        logger.info("Load unaccepted images.");
 
         String moveScript = String.format(MOVE_REJECT_TEMPLATE, fileName, fileName);
 

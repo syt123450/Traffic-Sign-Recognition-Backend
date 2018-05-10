@@ -22,7 +22,7 @@ public class ImageLoaderTest {
     private ImageLoader imageLoader;
 
     @Test
-    @Ignore
+//    @Ignore
     public void testLoadAccepted() {
         System.out.println(imageLoader.loadAccepted("00000_00000.jpg", 0));
     }

@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.trafficsignrecognition.model.dao.GraphicDao">
 
-    <select id="getModelPrecises" resultType="ModelPreciseUnit">
+    <select id="getModelPrecises" resultType="com.trafficsignrecognition.model.domain.ModelPreciseUnit">
         SELECT
           id        AS epoch,
           precise   AS precise
         FROM model_precise
     </select>
 
-    <select id="getClassPrecises" resultType="ClassesPrecise">
+    <select id="getClassPrecises" resultType="com.trafficsignrecognition.model.domain.ClassesPrecise">
         SELECT
           epoch     AS epoch,
           class0    AS class0,
